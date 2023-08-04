@@ -18,6 +18,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class MyThreadPool {
 
     private static Logger logger = LoggerFactory.getLogger(MyThreadPool.class);
+
     private static int coreNums = Runtime.getRuntime().availableProcessors();
 
     @Bean(name = "forGXSZ")

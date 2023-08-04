@@ -10,7 +10,9 @@ import java.util.concurrent.TimeUnit;
  * Redis锁实现
  */
 public class RedisLock implements Lock {
+
     private StringRedisTemplate stringRedisTemplate;
+
     private String name; // 锁的名称，不用的业务有不同的锁
 
     public RedisLock(String name, StringRedisTemplate stringRedisTemplate) {
@@ -45,4 +47,5 @@ public class RedisLock implements Lock {
         String key = name;
         stringRedisTemplate.delete(key);
     }
+
 }

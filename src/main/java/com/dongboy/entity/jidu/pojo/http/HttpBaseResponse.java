@@ -7,8 +7,11 @@ import cn.hutool.http.HttpBase;
  * @what time    2023/4/13 22:21
  */
 public class HttpBaseResponse {
+
     HttpResponseStatus responseStatus;
+
     private String errorMessage;
+
     private String responseString;
 
     public boolean isSuccess() {
@@ -47,4 +50,5 @@ public class HttpBaseResponse {
     public void setResponseString(String responseString) {
         this.responseString = responseString;
     }
+
 }

@@ -29,7 +29,7 @@ import java.util.Map;
 @EnableScheduling
 public class RedisApplication {
 
-    @Autowired
+    @Resource
     private RestTemplateBuilder builder;
 
     @Bean

@@ -7,9 +7,13 @@ import java.util.Date;
  * @what time    2023/4/9 16:44
  */
 public class HTable {
+
     private Integer hId;
+
     private String hName;
+
     private Integer hAge;
+
     private Date hBirthday;
 
     public HTable() {
@@ -61,7 +65,7 @@ public class HTable {
     }
 
     public void sethBirthday(Date hBirthday) {
-
         this.hBirthday = hBirthday;
     }
+
 }

@@ -17,6 +17,7 @@ import javax.annotation.Resource;
 @RequestMapping("h")
 @Api(tags = "增删改查接口")
 public class HTableController {
+
     @Resource
     private HTableService hTableService;
 
@@ -43,4 +44,5 @@ public class HTableController {
     public Result search() {
         return hTableService.search();
     }
+
 }

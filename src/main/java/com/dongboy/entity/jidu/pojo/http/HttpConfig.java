@@ -5,7 +5,9 @@ package com.dongboy.entity.jidu.pojo.http;
  * @what time    2023/4/13 22:33
  */
 public class HttpConfig {
+
     private String contentType;
+
     private String jsonParam;
 
     public String getContentType() {
@@ -23,4 +25,5 @@ public class HttpConfig {
     public void setJsonParam(String jsonParam) {
         this.jsonParam = jsonParam;
     }
+
 }

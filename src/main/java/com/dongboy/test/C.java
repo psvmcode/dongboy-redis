@@ -7,6 +7,7 @@ import org.springframework.context.annotation.DependsOn;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 
@@ -17,7 +18,8 @@ import java.util.concurrent.CountDownLatch;
 @Configuration
 @DependsOn("b")
 public class C {
-    @Autowired
+
+    @Resource
     private B b;
 
     @Async
@@ -25,4 +27,5 @@ public class C {
     public void test() {
         AopUtils.isAopProxy(C.class);
     }
+
 }

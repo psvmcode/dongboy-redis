@@ -5,10 +5,12 @@ package com.dongboy.entity.vo;
  * @date 2022年09月14日 10:45
  */
 public class SeckillVoucherVo {
+
     /**
      * 关联的优惠券的id
      */
     private Long voucherId;
+
     /**
      * 库存
      */
@@ -37,4 +39,5 @@ public class SeckillVoucherVo {
     public void setStock(Integer stock) {
         this.stock = stock;
     }
+
 }

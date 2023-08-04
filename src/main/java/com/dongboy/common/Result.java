@@ -6,9 +6,13 @@ package com.dongboy.common;
  */
 
 public class Result<T> {
+
     private Boolean status;
+
     private Integer code;
+
     private String message;
+
     private T data;
 
     public static <T> Result<T> success(T data) {
@@ -77,4 +81,5 @@ public class Result<T> {
     public void setData(T data) {
         this.data = data;
     }
+
 }

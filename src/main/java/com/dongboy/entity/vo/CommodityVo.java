@@ -8,12 +8,19 @@ import java.time.LocalDateTime;
  * @date 2022年09月18日 19:29
  */
 public class CommodityVo {
+
     private static final long serialVersionUID = 1L;
+
     private Long id;
+
     private String cdyName;
+
     private String cdyDescribe;
+
     private LocalDateTime createTime;
+
     private String cdyStatus;
+
     private BigDecimal cdyPrice;
 
     public CommodityVo() {
@@ -75,4 +82,5 @@ public class CommodityVo {
     public void setCdyPrice(BigDecimal cdyPrice) {
         this.cdyPrice = cdyPrice;
     }
+
 }

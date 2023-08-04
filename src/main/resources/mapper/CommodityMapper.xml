@@ -53,6 +53,7 @@
             <if test="cdyPrice != null">#{cdyPrice},</if>
         </trim>
     </insert>
+
     <update id="update" parameterType="CommodityVo">
         update seckill_commodity
         <trim prefix="SET" suffixOverrides=",">
@@ -77,4 +78,5 @@
         <include refid="selectCommodityVo"/>
         where id = #{commodityId}
     </select>
+
 </mapper>

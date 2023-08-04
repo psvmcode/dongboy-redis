@@ -8,13 +8,21 @@ import java.time.LocalDateTime;
  * @date 2022年09月18日 19:18
  */
 public class SeckillCommodity {
+
     private static final long serialVersionUID = 1L;
+
     private Long id;
+
     private String cdyName;
+
     private String cdyDescribe;
+
     private LocalDateTime createTime;
+
     private LocalDateTime updateTime;
+
     private String cdyStatus;
+
     private BigDecimal cdyPrice;
 
     public SeckillCommodity() {
@@ -85,4 +93,5 @@ public class SeckillCommodity {
     public void setCdyPrice(BigDecimal cdyPrice) {
         this.cdyPrice = cdyPrice;
     }
+
 }

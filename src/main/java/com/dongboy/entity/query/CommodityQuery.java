@@ -7,9 +7,12 @@ import java.math.BigDecimal;
  * @date 2022年09月18日 19:25
  */
 public class CommodityQuery {
+
     private String cdyName;
+
     private BigDecimal topPrice;
-    private BigDecimal botomPrice;
+
+    private BigDecimal bottomPrice;
 
     public CommodityQuery() {
     }
@@ -17,7 +20,7 @@ public class CommodityQuery {
     public CommodityQuery(String cdyName, BigDecimal topPrice, BigDecimal botomPrice) {
         this.cdyName = cdyName;
         this.topPrice = topPrice;
-        this.botomPrice = botomPrice;
+        this.bottomPrice = botomPrice;
     }
 
     public String getCdyName() {
@@ -37,10 +40,10 @@ public class CommodityQuery {
     }
 
     public BigDecimal getBotomPrice() {
-        return botomPrice;
+        return bottomPrice;
     }
 
     public void setBotomPrice(BigDecimal botomPrice) {
-        this.botomPrice = botomPrice;
+        this.bottomPrice = botomPrice;
     }
 }

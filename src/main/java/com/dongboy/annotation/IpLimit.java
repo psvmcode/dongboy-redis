@@ -13,6 +13,7 @@ import java.lang.annotation.*;
 @Inherited
 @Documented
 public @interface IpLimit {
+
     String name() default "";
 
     String key() default "";
@@ -24,4 +25,5 @@ public @interface IpLimit {
     int count();
 
     IpLimitType limitType() default IpLimitType.CUSTOMER;
+
 }

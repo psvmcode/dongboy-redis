@@ -20,6 +20,7 @@ import java.util.Objects;
  * @what time    2023/1/27 22:38
  */
 public class GpsExifInfo {
+
     public static void main(String[] args) throws Exception {
         File jpegFile = new File("D:/a.jpg");
         Metadata metadata = JpegMetadataReader.readMetadata(jpegFile);
@@ -42,4 +43,5 @@ public class GpsExifInfo {
 //            System.out.println(geoLocation.getLatitude());
 //        }
 //    }
+
 }

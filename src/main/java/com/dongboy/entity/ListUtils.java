@@ -18,4 +18,5 @@ public class ListUtils {
     public List<StationLog> list() {
         return new CopyOnWriteArrayList<>();
     }
+
 }

@@ -17,4 +17,5 @@ public interface Lock {
      * @author dong boy
      */
     void unlock();
+
 }

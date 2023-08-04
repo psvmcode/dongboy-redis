@@ -23,7 +23,7 @@ import java.util.Map;
 @Api(tags = "GPT测试")
 public class GPTController {
 
-    @Autowired
+    @Resource
     private RestTemplate restTemplate;
 
     @PostMapping("/test")
@@ -43,6 +43,5 @@ public class GPTController {
         System.out.println(body);
         return body;
     }
-
 
 }

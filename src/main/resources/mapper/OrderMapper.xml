@@ -32,4 +32,5 @@
             <if test="updateTime != null">#{updateTime},</if>
         </trim>
     </insert>
+
 </mapper>
