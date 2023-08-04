@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dongboy.mapper.CommodityMapper">
+
+    <resultMap type="SeckillCommodity" id="CommodityResult">
+        <result property="id" column="id"/>
+        <result property="cdyName" column="cdy_name"/>
+        <result property="cdyDescribe" column="cdy_describe"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="cdyStatus" column="cdy_status"/>
+        <result property="cdyPrice" column="cdy_price"/>
+    </resultMap>
+
+    <resultMap type="CommodityVo" id="CommodityResultVo">
+        <result property="id" column="id"/>
+        <result property="cdyName" column="cdy_name"/>
+        <result property="cdyDescribe" column="cdy_describe"/>
+        <result property="createTime" column="create_time"/>
+        <result property="cdyStatus" column="cdy_status"/>
+        <result property="cdyPrice" column="cdy_price"/>
+    </resultMap>
+
+    <sql id="selectCommodityVo">
+        select id,
+               cdy_name,
+               cdy_describe,
+               create_time,
+               cdy_status,
+               cdy_price
+        from seckill_commodity
+    </sql>
+
+
+    <insert id="addCommodity" parameterType="SeckillCommodity" useGeneratedKeys="true" keyProperty="id">
+        insert into seckill_commodity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="cdyName != null">cdy_name,</if>
+            <if test="cdyDescribe != null">cdy_describe,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="cdyStatus != null">cdy_status,</if>
+            <if test="cdyPrice != null">cdy_price,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="cdyName != null">#{cdyName},</if>
+            <if test="cdyDescribe != null">#{cdyDescribe},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="cdyStatus != null">#{cdyStatus},</if>
+            <if test="cdyPrice != null">#{cdyPrice},</if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="CommodityVo">
+        update seckill_commodity
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="cdyName != null">cdy_name = #{cdyName},</if>
+            <if test="cdyDescribe != null">cdy_describe = #{cdyDescribe},</if>
+            <if test="cdyStatus != null">cdy_status = #{cdyStatus},</if>
+            <if test="cdyPrice != null">cdy_price = #{cdyPrice},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <select id="list" parameterType="commodityQuery" resultMap="CommodityResultVo">
+        <include refid="selectCommodityVo"/>
+        <where>
+            <if test="cdyName != null ">and cdy_name like concat('%', #{cdyName}, '%')</if>
+            <if test="topPrice != null ">and cdy_price &lt;= #{topPrice}</if>
+            <if test="botomPrice != null ">and cdy_price >= #{botomPrice}</if>
+        </where>
+    </select>
+
+    <select id="getCommodityById" parameterType="Long" resultMap="CommodityResultVo">
+        <include refid="selectCommodityVo"/>
+        where id = #{commodityId}
+    </select>
+</mapper>

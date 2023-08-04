@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dongboy.mapper.HTableMapper">
+
+    <resultMap type="SeckillOrder" id="OrderResult">
+        <result property="id" column="id"/>
+        <result property="voucherId" column="voucher_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="selectOrderVo">
+        select id,
+               voucher_id,
+               create_time,
+               update_time
+        from seckill_order
+    </sql>
+
+    <insert id="insert" parameterType="HTable" keyProperty="hId">
+        insert into h_table
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="hId != null">h_id,</if>
+            <if test="hName != null">h_name,</if>
+            <if test="hAge != null">h_age,</if>
+            <if test="hBirthday != null">h_birthday,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="hId != null">#{hId},</if>
+            <if test="hName != null">#{hName},</if>
+            <if test="hAge != null">#{hAge},</if>
+            <if test="hBirthday != null">#{hBirthday},</if>
+        </trim>
+    </insert>
+
+    <select id="search" resultType="com.dongboy.entity.HTable">
+        select h_id,h_name,h_age,h_birthday from h_table
+    </select>
+
+    <update id="update" parameterType="HTable">
+        update h_table
+        set h_name     = #{hName},
+            h_age=#{hAge},
+            h_birthday = #{hBirthday}
+        where h_id = #{hId}
+    </update>
+    <delete id="delete">
+        delete
+        from h_table
+        where h_id = #{hId}
+    </delete>
+</mapper>

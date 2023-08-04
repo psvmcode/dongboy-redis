@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dongboy.mapper.SeckillVoucherMapper">
+
+    <resultMap type="SeckillVoucher" id="SeckillVoucherResult">
+        <result property="voucherId" column="voucher_id"/>
+        <result property="stock" column="stock"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="beginTime" column="begin_time"/>
+        <result property="endTime" column="end_time"/>
+    </resultMap>
+
+    <sql id="selectSeckillVoucherVo">
+        select voucher_id,
+               stock,
+               create_time,
+               update_time,
+               begin_time,
+               end_time
+        from seckill_voucher
+    </sql>
+
+    <insert id="addSeckillVoucher" parameterType="SeckillVoucher" useGeneratedKeys="true" keyProperty="voucher_id">
+        insert into seckill_voucher
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="voucherId != null">voucher_id,</if>
+            <if test="stock != null">stock,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="beginTime != null">begin_time,</if>
+            <if test="endTime != null">end_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="voucherId != null">#{voucherId},</if>
+            <if test="stock != null">#{stock},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="beginTime != null">#{beginTime},</if>
+            <if test="endTime != null">#{endTime},</if>
+        </trim>
+    </insert>
+
+    <update id="updateByIdAndStock">
+        update seckill_voucher
+        set stock = stock - 1
+        where voucher_id = #{voucherId}
+          and stock = #{stock}
+    </update>
+
+    <update id="updateById">
+        update seckill_voucher
+        set stock = stock - 1
+        where voucher_id = #{voucherId}
+    </update>
+
+    <select id="querySeckillVoucherById" parameterType="Long" resultMap="SeckillVoucherResult">
+        <include refid="selectSeckillVoucherVo"/>
+        where voucher_id = #{voucherId}
+    </select>
+</mapper>
