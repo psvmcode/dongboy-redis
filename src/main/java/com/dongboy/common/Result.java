@@ -16,28 +16,29 @@ public class Result<T> {
     private T data;
 
     public static <T> Result<T> success(T data) {
-        return new Result<T>(true,200, "成功", data);
+        return new Result<T>(true, 200, "成功", data);
     }
 
     public static <T> Result<T> success(T data, String message) {
-        return new Result<T>(true,200, message, data);
+        return new Result<T>(true, 200, message, data);
     }
 
     public static <T> Result<T> failed(Integer errorCode) {
-        return new Result<T>(false,errorCode, "失败", null);
+        return new Result<T>(false, errorCode, "失败", null);
     }
 
     /**
      * 失败返回结果
+     *
      * @param errorCode 错误码
-     * @param message 错误信息
+     * @param message   错误信息
      */
-    public static <T> Result<T> failed(Integer errorCode,String message) {
-        return new Result<T>(false,errorCode, message, null);
+    public static <T> Result<T> failed(Integer errorCode, String message) {
+        return new Result<T>(false, errorCode, message, null);
     }
 
     public static <T> Result<T> failed(String message) {
-        return new Result<T>(false,1001, message, null);
+        return new Result<T>(false, 1001, message, null);
     }
 
     public Result() {

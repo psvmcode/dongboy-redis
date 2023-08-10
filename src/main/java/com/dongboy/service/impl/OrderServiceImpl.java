@@ -3,8 +3,9 @@ package com.dongboy.service.impl;
 import com.dongboy.entity.SeckillOrder;
 import com.dongboy.mapper.OrderMapper;
 import com.dongboy.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @author dong boy
@@ -13,11 +14,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    @Autowired
+    @Resource
     private OrderMapper orderMapper;
 
     @Override
     public Long saveOrder(SeckillOrder order) {
         return orderMapper.saveOrder(order);
     }
+
 }

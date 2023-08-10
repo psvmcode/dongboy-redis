@@ -9,8 +9,6 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
 
 /**
  * @Author dongboy
@@ -18,8 +16,6 @@ import org.slf4j.Logger;
  */
 @Configuration
 public class RedisConfig {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(RedisConfig.class);
 
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
@@ -35,7 +31,6 @@ public class RedisConfig {
         //使用StringRedisSerializer来序列化和反序列化redis的key值
         template.setKeySerializer(new StringRedisSerializer());
         template.afterPropertiesSet();
-        LOGGER.info("Springboot RedisTemplate 加载完成");
         return template;
     }
 

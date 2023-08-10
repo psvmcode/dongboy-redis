@@ -8,7 +8,9 @@ import java.time.LocalDateTime;
  * 秒杀优惠券表，与优惠券是一对一关系
  */
 public class SeckillVoucher {
+
     private static final long serialVersionUID = 1L;
+
     /**
      * 关联的优惠券的id
      */
@@ -97,4 +99,5 @@ public class SeckillVoucher {
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
+
 }

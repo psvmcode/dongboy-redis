@@ -5,6 +5,8 @@ package com.dongboy.enums;
  * @what time    2023/1/12 18:58
  */
 public enum IpLimitType {
+
     CUSTOMER,
     IP;
+
 }

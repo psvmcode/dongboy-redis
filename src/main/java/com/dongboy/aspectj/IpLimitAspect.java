@@ -9,10 +9,6 @@ import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.core.script.RedisScript;
@@ -22,7 +18,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
 import java.lang.reflect.Method;
 
 /**
@@ -41,7 +36,6 @@ public class IpLimitAspect {
 
     @Around("execution(public * *(..)) && @annotation(com.dongboy.annotation.IpLimit)")
     public Object interceptor(ProceedingJoinPoint pjp) {
-        System.out.println("什么勾8");
         MethodSignature signature = (MethodSignature) pjp.getSignature();
         Method method = signature.getMethod();
         IpLimit limitAnnotation = method.getAnnotation(IpLimit.class);
@@ -51,7 +45,7 @@ public class IpLimitAspect {
         int limitPeriod = limitAnnotation.period();
         int limitCount = limitAnnotation.count();
         /**
-         * 根据限流类型获取不同的key ,如果不传我们会以方法名作为key
+         * 根据限流类型获取不同的key ,如果不传以方法名作为key
          */
         switch (limitType) {
             case IP:
@@ -64,7 +58,6 @@ public class IpLimitAspect {
                 key = StringUtils.upperCase(method.getName());
         }
         System.out.println("ip是：" + key);
-
         ImmutableList<String> keys = ImmutableList.of(StringUtils.join(limitAnnotation.prefix(), key));
         try {
             String luaScript = buildLuaScript();
@@ -121,11 +114,9 @@ public class IpLimitAspect {
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("X-Real-IP");
         }
-
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
-
         return "0:0:0:0:0:0:0:1".equals(ip) ? "127.0.0.1" : getMultistageReverseProxyIp(ip);
     }
 

@@ -9,11 +9,9 @@ import com.dongboy.common.utils.RedisLock;
 import com.dongboy.common.utils.SnowflakeIdWorker;
 import com.dongboy.entity.SeckillOrder;
 import com.dongboy.entity.SeckillVoucher;
-import com.dongboy.entity.vo.CommodityVo;
 import com.dongboy.mapper.SeckillVoucherMapper;
 import com.dongboy.service.OrderService;
 import com.dongboy.service.SeckillVoucherService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -23,8 +21,6 @@ import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
-import static com.dongboy.common.constants.RedisKeys.COMMODITY_KEY;
-
 /**
  * @author dong boy
  * @date 2022年09月13日 13:26
@@ -32,10 +28,10 @@ import static com.dongboy.common.constants.RedisKeys.COMMODITY_KEY;
 @Service
 public class SeckillVoucherServiceImpl implements SeckillVoucherService {
 
-    @Autowired
+    @Resource
     private OrderService orderService;
 
-    @Autowired
+    @Resource
     private SeckillVoucherMapper seckillVoucherMapper;
 
     @Resource
@@ -210,4 +206,5 @@ public class SeckillVoucherServiceImpl implements SeckillVoucherService {
         orderService.saveOrder(order);
         return Result.success(order, "添加成功");
     }
+
 }

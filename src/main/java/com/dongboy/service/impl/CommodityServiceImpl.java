@@ -9,11 +9,8 @@ import com.dongboy.entity.query.CommodityQuery;
 import com.dongboy.entity.vo.CommodityVo;
 import com.dongboy.mapper.CommodityMapper;
 import com.dongboy.service.CommodityService;
-import io.swagger.models.auth.In;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -35,50 +32,18 @@ import static com.dongboy.common.constants.RedisKeys.COMMODITY_KEY;
 @Service
 public class CommodityServiceImpl implements CommodityService {
 
-    @Autowired
+    @Resource
     private CommodityMapper commodityMapper;
 
-    @Autowired
+    @Resource
     private StringRedisTemplate redisTemplate;
-
-//    @Resource(name = "testOne", type = ThreadPoolTaskExecutor.class)
-//    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
     // todo 用线程池给这个业务分配线程资源
     @Override
     public boolean addCommodity(SeckillCommodity seckillCommodity) {
-//        seckillCommodity.setCreateTime(LocalDateTime.now());
-//
-//        // 待汇总数据
-//        List<Integer> all = new ArrayList<>();
-//        // 轮询
-//        for (int i = 0; i < 10; i++) {
-//            // 当前业务
-//            Future<List<Integer>> future = threadPoolTaskExecutor.submit(
-//                    new Callable<List<Integer>>() {
-//                        @Override
-//                        public List<Integer> call() throws Exception {
-//                            List<Integer> temp = new ArrayList<>();
-//                            for (int j = 0; j < 10; j++) {
-//                                temp.add(j);
-//                            }
-//                            return temp;
-//                        }
-//                    }
-//            );
-//            // 汇总
-//            try {
-//                List<Integer> list = future.get();
-//                all.addAll(list);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            } catch (ExecutionException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        Long commodityId = commodityMapper.addCommodity(seckillCommodity);
-//        return commodityId > 0;
-        return true;
+        seckillCommodity.setCreateTime(LocalDateTime.now());
+        Long commodityId = commodityMapper.addCommodity(seckillCommodity);
+        return commodityId > 0;
     }
 
     @Override
@@ -167,4 +132,5 @@ public class CommodityServiceImpl implements CommodityService {
             redisTemplate.delete(RedisKeys.COMMODITY_LIST_KEY);
         }
     }
+
 }

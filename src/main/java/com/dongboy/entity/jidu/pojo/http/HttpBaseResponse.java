@@ -1,7 +1,5 @@
 package com.dongboy.entity.jidu.pojo.http;
 
-import cn.hutool.http.HttpBase;
-
 /**
  * @Author dongboy
  * @what time    2023/4/13 22:21

@@ -7,5 +7,7 @@ import com.dongboy.entity.SeckillOrder;
  * @date 2022年09月13日 11:01
  */
 public interface OrderService {
+
     Long saveOrder(SeckillOrder order);
+
 }

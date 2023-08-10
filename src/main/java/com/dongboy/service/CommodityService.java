@@ -8,6 +8,7 @@ import com.dongboy.entity.vo.CommodityVo;
 import java.util.List;
 
 public interface CommodityService {
+
     List<CommodityVo> list(CommodityQuery query);
 
     boolean addCommodity(SeckillCommodity seckillCommodity);
@@ -15,4 +16,5 @@ public interface CommodityService {
     int update(CommodityVo commodityVo);
 
     Result getCommodityById(Long commodityId);
+
 }

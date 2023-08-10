@@ -11,6 +11,7 @@ import org.springframework.data.redis.core.RedisTemplate;
  */
 @Configuration
 public class MessageListener {
+
     private RedisTemplate redisTemplate;
 
     @Autowired
@@ -29,4 +30,5 @@ public class MessageListener {
         Object test = redisTemplate.opsForList().rightPop("test");
         System.out.println("接受了消息：" + test);
     }
+
 }

@@ -72,4 +72,5 @@ public class SeckillOrder {
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
+
 }

@@ -46,4 +46,5 @@ public class CommodityQuery {
     public void setBotomPrice(BigDecimal botomPrice) {
         this.bottomPrice = botomPrice;
     }
+
 }
